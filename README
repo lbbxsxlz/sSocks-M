@@ -1,3 +1,8 @@
+sSocks modify for ARM, fork https://sourceforge.net/projects/ssocks/
+修改ssocks源码，使之能在ARM架构设备上运行并实现代理
+
+sSocks original README
+
 sSocks is a package which contains: a socks5 server implements RFC 1928 (SOCKS V5) 
 and RFC 1929 (Authentication for SOCKS V5), a reverse socks server and client, 
 a netcat like tool, which supports socks5 with authentication 
