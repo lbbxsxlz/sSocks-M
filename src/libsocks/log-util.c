@@ -27,6 +27,7 @@
  */
 #include "output-util.h"
 #include "socks-common.h"
+#include "bor-util.h"
 
 #include <stdio.h>
 #include <time.h>

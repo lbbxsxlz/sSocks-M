@@ -30,7 +30,7 @@
 #include "socks5-server.h"
 #include "net-util.h"
 #include "log-util.h"
-
+#include "socks4.h"
 
 #include "bor-util.h"
 
@@ -655,7 +655,7 @@ int dispatch_server_write(s_socket *soc, s_socket *soc_stream, s_socks *socks,
 		TRACE(L_VERBOSE, "server [%d]: server connection on %s OK",socks->id,
 			bor_adrtoa_in(&soc->adrS));
 		soc->con = 1;
-		return;
+		return 0;
 	}
 	switch(socks->state){
 		case S_W_VER_ACK:
@@ -993,7 +993,7 @@ int init_select_server_reverse (s_client *tc, int *maxfd,
 	while(cpt < ncon){
 		/* Open connection to the socks client */
 		for (nc = 0; nc < MAXCLI; nc++) if ( tc[nc].soc.soc == -1 ) break;
-		if (nc >= MAXCLI) return;
+		if (nc >= MAXCLI) return -1;
 		/* Remove nonblockant for ssl */
 		tc[nc].soc.soc = new_client_socket(tc[nc].conf->config.cli->sockshost,
 				tc[nc].conf->config.cli->socksport, &tc[nc].soc.adrC,

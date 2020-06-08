@@ -1,4 +1,5 @@
 #include "socks-common.h"
+#include <stdio.h>
 
 int buf_empty(s_buffer *buf){
 	return ( (buf->b - buf->a) == 0 );
